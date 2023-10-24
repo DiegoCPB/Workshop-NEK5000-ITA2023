@@ -106,9 +106,9 @@ c      implicit none
       include 'TOTAL'
       include 'NEKUSE'
 
-      ux   = 0.0
-      uy   = 0.0
-      uz   = 0.0
+      ux   = 0.05*(2*rand(1)-1)
+      uy   = 0.05*(2*rand(1)-1)
+      uz   = 0.05*(2*rand(1)-1)
       temp = 0.0
 
       return

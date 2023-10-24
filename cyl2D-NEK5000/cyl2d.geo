@@ -15,7 +15,7 @@ hF = fact*href;
 
 r0 = 0.5;
 r1 = r0 + BLthick;
-r2 = 1.5; // deve ser maior que 2*r0 = 1 (o mapa da ondulação é gradual radialmente até r=1)
+r2 = 1.5;
 r3 = 6;
 rb = r3/Sin(beta);
 

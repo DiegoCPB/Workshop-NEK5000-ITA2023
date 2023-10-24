@@ -2,13 +2,12 @@
 # nek parameter file
 #
 [GENERAL]
-#startFrom = cyl2d0.f01000 
-numSteps = 5000
-stopAt = numSteps
+endTime  = 200
+stopAt = endTime
 variableDT = yes
 targetCFL = 0.5
-writeControl = timeStep
-writeInterval = 5
+writeControl = runTime
+writeInterval = 1
 dealiasing = yes
 timeStepper = bdf2
 
@@ -16,9 +15,10 @@ timeStepper = bdf2
 equation = incompNS
 
 [PRESSURE]
-residualTol = 1e-8
+residualTol = 1e-5
 residualProj = yes
 
 [VELOCITY]
+residualTol = 1e-8
 density = 1
 viscosity = -100 # Quando negativo, indica o numero de reynolds
