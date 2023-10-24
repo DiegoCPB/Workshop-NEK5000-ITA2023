@@ -2,12 +2,12 @@
 # nek parameter file
 #
 [GENERAL]
-endTime  = 250
+endTime  = 100
 stopAt = endTime
 variableDT = yes
 targetCFL = 0.3
 writeControl = runTime
-writeInterval = 0.25
+writeInterval = 0.1
 dealiasing = yes
 timeStepper = bdf2
 
