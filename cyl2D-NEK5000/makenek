@@ -5,7 +5,7 @@ set -a
 #-------------------------------------------------------------------------------
 
 # source path 
-NEK_SOURCE_ROOT="/home/diego/Nek5000/Nek5000-v19" 
+NEK_SOURCE_ROOT="$HOME/Apps/Nek5000" 
 
 # Fortran/C compiler
 #FC="mpif77"

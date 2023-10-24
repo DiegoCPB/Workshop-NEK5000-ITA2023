@@ -18,7 +18,7 @@ import subprocess as sp
 # I/O
 CASENAME = 'cyl2d'
 OUTNAME = CASENAME
-MPI_RANKS = 6
+MPI_RANKS = 4
 # -----------------------------------------------------------------------------
 
 def getNEKpath():

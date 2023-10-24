@@ -2,13 +2,13 @@
 # nek parameter file
 #
 [GENERAL]
-startFrom = cyl2d0.f01000 
-numSteps = 50000
+#startFrom = cyl2d0.f01000 
+numSteps = 5000
 stopAt = numSteps
 variableDT = yes
 targetCFL = 0.5
 writeControl = timeStep
-writeInterval = 50
+writeInterval = 5
 dealiasing = yes
 timeStepper = bdf2
 
