@@ -56,7 +56,7 @@ def callNEKMPI():
     Calls nekmpi binary
     """
     nek_path = getNEKpath()
-    outfile = CASENAME+'.out'
+    outfile = CASENAME + '.out'
     cmd = ['sh','-c','{}/bin/nekmpi {} {} 2>&1 | tee {}'.format(nek_path,CASENAME,str(MPI_RANKS),outfile)]
     print("Running NEK case... Check %s file." %(outfile))
     try:
@@ -102,7 +102,6 @@ if __name__ == "__main__":
     compileNEK()
     callNEKMPI()
     runVISNEK(OUTNAME)
-    #clean()
     
     
             

@@ -23,7 +23,10 @@ echo -e "############\n"
 sudo apt -y install build-essential gfortran libopenmpi-dev # NEK5000
 sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev # NEKtools e VisIt
 
-# Instala Python, Gmsh
+echo -e "\n#############"
+echo "Python e Gmsh"
+echo -e "#############\n"
+
 sudo apt -y install python3 gmsh
 ###############################################################################
 
@@ -63,24 +66,6 @@ fi
 if [[ ":$PATH:" != *":$TARGET/Visit/bin:"* ]]; then
     echo -e '\n# Adiciona o caminho para a pasta do VisIt' >> ~/.bashrc
     echo "export PATH=$TARGET/Visit/bin:\$PATH" >> ~/.bashrc
-fi
-
-# Instala o Paraview v5.11.2
-# A versao do Paraview disponivel no repositorio do Ubuntu nao traz suporte ao NEK5000
-if [ ! -d "$TARGET/Paraview" ]; then
-    echo -e "\n########"
-    echo "ParaView"
-    echo -e "########\n"
-    wget --content-disposition "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.11&type=binary&os=Linux&downloadFile=ParaView-5.11.2-MPI-Linux-Python3.9-x86_64.tar.gz"
-    tar -xvf ParaView-5.11.2-MPI-Linux-Python3.9-x86_64.tar.gz -C $TARGET 
-    mv $TARGET/ParaView-5.11.2-MPI-Linux-Python3.9-x86_64 $TARGET/Paraview 
-    rm ParaView-5.11.2-MPI-Linux-Python3.9-x86_64.tar.gz
-fi
-
-# Adiciona o Paraview na path do sistema para o usuario atual
-if [[ ":$PATH:" != *":$TARGET/Paraview/bin:"* ]]; then
-    echo -e '\n# Adiciona o caminho para a pasta do Paraview' >> ~/.bashrc
-    echo "export PATH=$TARGET/Paraview/bin:\$PATH" >> ~/.bashrc
 fi
 
 echo -e "\n#######################"
