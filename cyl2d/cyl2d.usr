@@ -19,7 +19,7 @@ c-----------------------------------------------------------------------
 c      implicit none
 
       integer ix,iy,iz,eg
-     
+      
       include 'SIZE'
       include 'TOTAL'
       include 'NEKUSE'
@@ -121,6 +121,29 @@ c      implicit none
       include 'SIZE'
       include 'TOTAL'
 
+      real scale
+      integer n
+      real x0(3)
+      save x0
+      data x0 /3*0/
+      integer bIDs(1), iobj_wall(1)
+
+c     define objects for surface integrals
+      if (istep.eq.0) then
+        n = 1 ! apenas uma superficie
+        bIDs(1) = 1 ! parede do cilindro (bID 1)
+        call create_obj(iobj_wall(1),bIDs,n)
+      endif 
+
+      scale = 2.  ! Cd = F/(.5 rho U^2 ) = 2*F
+      if (mod(istep,10).eq.0) then
+        call torque_calc(scale,x0,.true.,.false.) ! over surface/edge
+        call hpts() ! write out probes
+      endif
+
+      return
+      end
+
       return
       end
 c-----------------------------------------------------------------------
@@ -148,7 +171,7 @@ c      implicit none
           elseif (id_face.eq.3) then    ! set bc on Lower (bcID 3) for field 1 (velocity)
             cbc(ifc,iel,1) = 'O  '
           elseif (id_face.eq.4) then    ! set bc on Outlet (bcID 4) for field 1 (velocity)
-            cbc(ifc,iel,1) = 'ON '
+            cbc(ifc,iel,1) = 'O  '
           elseif (id_face.eq.5) then    ! set bc on Inlet (bcID 5) for field 1 (velocity)
             cbc(ifc,iel,1) = 'v  '
           endif

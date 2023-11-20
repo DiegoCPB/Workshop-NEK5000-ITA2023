@@ -23,7 +23,7 @@ c
       parameter (lxo=lx1)              ! max GLL points on output (lxo>=lx1)
       parameter (ldimt_proj=1)         ! max auxiliary fields residual projection
       parameter (lelr=lelt)            ! max number of local elements per restart file
-      parameter (lhis=0)               ! max history/monitoring points
+      parameter (lhis=16)              ! max history/monitoring points
       parameter (maxobj=160)           ! max number of objects
       parameter (lpert=1)              ! max number of perturbations
       parameter (toteq=1)              ! max number of conserved scalars in CMT

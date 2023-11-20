@@ -208,16 +208,27 @@ Transfinite Surface "*";
 Recombine Surface "*";
 
 // ----------------------------------------------------------------------------
-Physical Curve("Cylinder") = {19, 20, 21, 22, 23, 24};
-Physical Curve("Upper") = {38, 43}; 
-Physical Curve("Lower") = {46, 41};
-Physical Curve("Outlet") = {44, 45};
-Physical Curve("Inlet") = {42, 37};
-Physical Surface("Inside") = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+h = 10*r0;
+nelz = 10;
+Extrude {0,0,h} {
+    Surface{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}; 
+    Layers{nelz,1};
+    Recombine;
+}
+Coherence;
+
+// ----------------------------------------------------------------------------
+Physical Surface("Cylinder") = {68,90,112,134,156,178};
+Physical Surface("Upper") = {346, 452}; 
+Physical Surface("Lower") = {412, 482};
+Physical Surface("Outlet") = {456, 478};
+Physical Surface("Inlet") = {324, 434};
+Physical Surface("Right") = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,20,16,17,18};
+Physical Surface("Left") = {69,91,113,135,157,179,201,223,245,267,289,311,333,355,377,465,487,399,421,443};
+Physical Volume("Inside") = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
 // Sets the mesh element order --------------------------------------------------
 Mesh.ElementOrder = 2;
 
 // Sets the mesh version for exporting the mesh ---------------------------------
 Mesh.MshFileVersion = 2.2;
-
