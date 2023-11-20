@@ -1,0 +1,24 @@
+#
+# nek parameter file
+#
+[GENERAL]
+endTime  = 100
+stopAt = endTime
+variableDT = yes
+targetCFL = 0.3
+writeControl = runTime
+writeInterval = 0.1
+dealiasing = yes
+timeStepper = bdf2
+
+[PROBLEMTYPE]
+equation = incompNS
+
+[PRESSURE]
+residualTol = 1e-5
+residualProj = yes
+
+[VELOCITY]
+residualTol = 1e-8
+density = 1
+viscosity = -100 # Quando negativo, indica o numero de reynolds

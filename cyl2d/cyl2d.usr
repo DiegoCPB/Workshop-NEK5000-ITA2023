@@ -143,9 +143,6 @@ c     define objects for surface integrals
 
       return
       end
-
-      return
-      end
 c-----------------------------------------------------------------------
       subroutine userqtl ! Set thermal divergence
 

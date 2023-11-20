@@ -218,14 +218,14 @@ Extrude {0,0,h} {
 Coherence;
 
 // ----------------------------------------------------------------------------
-Physical Surface("Cylinder") = {68,90,112,134,156,178};
+Physical Surface("Cylinder") = {68, 90, 112, 134, 156, 178};
 Physical Surface("Upper") = {346, 452}; 
 Physical Surface("Lower") = {412, 482};
 Physical Surface("Outlet") = {456, 478};
 Physical Surface("Inlet") = {324, 434};
-Physical Surface("Right") = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,20,16,17,18};
-Physical Surface("Left") = {69,91,113,135,157,179,201,223,245,267,289,311,333,355,377,465,487,399,421,443};
-Physical Volume("Inside") = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+Physical Surface("Right") = {1, 2, 3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+Physical Surface("Left") =  {69, 91, 113, 135, 157, 179, 201, 223, 245, 267, 289, 311, 333, 355, 377, 399, 421, 443, 465, 487};
+Physical Volume("Inside") = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
 // Sets the mesh element order --------------------------------------------------
 Mesh.ElementOrder = 2;
