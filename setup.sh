@@ -6,29 +6,29 @@
 # Parametros
 TARGET="$HOME/Apps" # Pasta dos aplicativos
 
-###############################################################################
-# Comandos que pedem senha de usuario
+# Para o caso de uma distribuicao Debian-like com acesso root 
+# Pede senha do usuário
+if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
+    echo -e "\n######################"
+    echo "Atualizacao do sistema"
+    echo -e "######################\n"
 
-echo -e "\n######################"
-echo "Atualizacao do sistema"
-echo -e "######################\n"
+    sudo apt update
+    sudo apt -y upgrade
 
-sudo apt update
-sudo apt -y upgrade
+    echo -e "\n############"
+    echo "Dependencias"
+    echo -e "############\n"
 
-echo -e "\n############"
-echo "Dependencias"
-echo -e "############\n"
+    sudo apt -y install build-essential gfortran libopenmpi-dev # NEK5000
+    sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev # NEKtools e VisIt
 
-sudo apt -y install build-essential gfortran libopenmpi-dev # NEK5000
-sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev # NEKtools e VisIt
+    echo -e "\n#############"
+    echo "Python, Gmsh e Git"
+    echo -e "#############\n"
 
-echo -e "\n#############"
-echo "Python e Gmsh"
-echo -e "#############\n"
-
-sudo apt -y install python3 gmsh
-###############################################################################
+    sudo apt -y install python3 gmsh git
+fi
 
 # Cria a pasta onde serao salvos os arquivos dos aplicativos
 if [ ! -d $TARGET ]; then
@@ -45,8 +45,8 @@ fi
 
 # Adiciona o NEK na path do sistema para o usuario atual
 if [[ ":$PATH:" != *":$TARGET/KTH_Framework/Nek5000/bin:"* ]]; then
-    echo -e '\n# Adiciona o caminho para a pasta do NEK5000' >> ~/.bashrc
-    echo "export PATH=$TARGET/KTH_Framework/Nek5000/bin:\$PATH" >> ~/.bashrc
+    echo -e '\n# Adiciona o caminho para a pasta do NEK5000' >> "$HOME/.bashrc"
+    echo "export PATH=$TARGET/KTH_Framework/Nek5000/bin:\$PATH" >> "$HOME/.bashrc"
 fi
 
 # Instala o visit v3.3.3
@@ -54,18 +54,24 @@ if [ ! -d "$TARGET/Visit" ]; then
     echo -e "\n#####"
     echo "VisIt"
     echo -e "#####\n"
-    wget --content-disposition https://github.com/visit-dav/visit/releases/download/v3.3.3/visit3_3_3.linux-x86_64-ubuntu20.tar.gz
     wget --content-disposition https://github.com/visit-dav/visit/releases/download/v3.3.3/visit-install3_3_3
     chmod +x visit-install3_3_3
-    printf '1\n' | ./visit-install3_3_3 3.3.3 linux-x86_64-ubuntu20 "$TARGET/Visit"
-    rm visit3_3_3.linux-x86_64-ubuntu20.tar.gz
+    if [ "$(grep -Ei 'buntu|mint' /etc/*release)" ]; then # Ubuntu ou Linux Mint
+        wget --content-disposition https://github.com/visit-dav/visit/releases/download/v3.3.3/visit3_3_3.linux-x86_64-ubuntu20.tar.gz
+        printf '1\n' | ./visit-install3_3_3 3.3.3 linux-x86_64-ubuntu20 "$TARGET/Visit"
+        rm visit3_3_3.linux-x86_64-ubuntu20.tar.gz
+    elif [ "$(grep -Ei 'rhel|fedora' /etc/*release)" ]; then # Cluster ITA-home69
+        wget --content-disposition https://github.com/visit-dav/visit/releases/download/v3.3.3/visit3_3_3.linux-x86_64-rhel7-wmesa.tar.gz
+        printf '1\n' | ./visit-install3_3_3 3.3.3 linux-x86_64-rhel7-wmesa "$TARGET/Visit"
+        rm visit3_3_3.linux-x86_64-rhel7-wmesa.tar.gz
+    fi
     rm visit-install3_3_3
 fi
 
 # Adiciona o Visit na path do sistema para o usuario atual
 if [[ ":$PATH:" != *":$TARGET/Visit/bin:"* ]]; then
-    echo -e '\n# Adiciona o caminho para a pasta do VisIt' >> ~/.bashrc
-    echo "export PATH=$TARGET/Visit/bin:\$PATH" >> ~/.bashrc
+    echo -e '\n# Adiciona o caminho para a pasta do VisIt' >> "$HOME/.bashrc"
+    echo "export PATH=$TARGET/Visit/bin:\$PATH" >> "$HOME/.bashrc"
 fi
 
 echo -e "\n#######################"
