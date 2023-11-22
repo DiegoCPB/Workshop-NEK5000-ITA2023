@@ -21,7 +21,7 @@ if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
     echo -e "############\n"
 
     sudo apt -y install build-essential gfortran libopenmpi-dev # NEK5000
-    sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev # NEKtools e VisIt
+    sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev x11-apps # NEKtools e VisIt
 
     echo -e "\n#############"
     echo "Python, Gmsh e Git"
