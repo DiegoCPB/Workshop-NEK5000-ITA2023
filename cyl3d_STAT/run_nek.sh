@@ -12,4 +12,5 @@
 
 # Run this commands
 TOTAL_TASKS=$((SLURM_JOB_NUM_NODES * SLURM_NTASKS_PER_NODE))
+./compile_script
 $HOME/Apps/KTH_Framework/Nek5000/bin/nekmpi cyl3d $TOTAL_TASKS

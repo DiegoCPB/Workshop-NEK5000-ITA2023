@@ -17,8 +17,10 @@ import subprocess as sp
 # -----------------------------------------------------------------------------
 # I/O
 CASENAME = 'cyl2d'
-OUTNAME = CASENAME
-MPI_RANKS = 4
+if len(sys.argv) > 1:
+    MPI_RANKS = sys.argv[1]
+else:
+    MPI_RANKS = 4
 # -----------------------------------------------------------------------------
 
 def getNEKpath():
@@ -35,13 +37,12 @@ def getNEKpath():
     except:
         print('Error searching for NEK_SOURCE_ROOT in makenek file.')
         sys.exit(0)
-    print("NEK_SOURCE_ROOT: "+NEK_PATH)
+    print("NEK_SOURCE_ROOT: " + NEK_PATH)
     return NEK_PATH
 
 def compileNEK():
     print('Compiling NEK case... Check build.log file.')
     print('')
-    # '>/dev/null 2>&1' silences the output of the command 
     cmd = ['./makenek',CASENAME]
     try:
         sp.check_call(cmd)
@@ -95,13 +96,13 @@ def runChecks():
 def clean():
     print('')
     print('Cleaning case...')
-    os.system('./makenek clean')
+    os.system('printf "y\n" | ./makenek clean')
 
 if __name__ == "__main__":
     runChecks()
     compileNEK()
     callNEKMPI()
-    runVISNEK(OUTNAME)
+    runVISNEK()
     
     
             

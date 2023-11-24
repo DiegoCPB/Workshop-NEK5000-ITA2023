@@ -6,8 +6,8 @@ endTime  = 100
 stopAt = endTime
 variableDT = yes
 targetCFL = 0.3
-writeControl = runTime
-writeInterval = 0.1
+writeControl = timeStep
+writeInterval = 100
 dealiasing = yes
 timeStepper = bdf2
 
