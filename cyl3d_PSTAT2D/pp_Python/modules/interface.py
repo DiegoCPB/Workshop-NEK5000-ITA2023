@@ -6,7 +6,7 @@
 
 import numpy as np
 
-def dbMaker(data,nx,ny,npwall):
+def dbMaker(data,nx,ny):
     """
     Making database for fields 'F1', 'F2, ...,'D64', where,
       'F': statistics
@@ -24,7 +24,6 @@ def dbMaker(data,nx,ny,npwall):
       `data`: data
       `nx`: number of points in the streamwise direction [Profs]
       `ny`: number of points in the vertical direction [Profs]
-      `npwall`: number of points at the bottom wall [Wall]
 
     Returns:
       `dbProfs`: a database containing the coordinates and "stats and derivatives" quantities 
@@ -75,7 +74,7 @@ def dbMaker(data,nx,ny,npwall):
 
 def read_pp_inputs(filename):
     """
-    Read the post-processing parameters from `inputs_phill_pp.in` 
+    Read the post-processing parameters from `inputs_cyl3d_pp.in` 
     """ 
     params = {}
     f1=open(filename,'r')

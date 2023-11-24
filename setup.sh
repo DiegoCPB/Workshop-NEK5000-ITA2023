@@ -28,29 +28,11 @@ if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
     sudo apt -y install build-essential gfortran libopenmpi-dev # NEK5000
     sudo apt -y install cmake libx11-dev libxt-dev qtbase5-dev x11-apps # NEKtools e VisIt
 
-    echo -e "\n#############"
-    echo "Python, Gmsh e Git"
-    echo -e "#############\n"
+    echo -e "\n#####################################"
+    echo "Python, Numpy, MatPlotLib, Gmsh e Git"
+    echo -e "#####################################\n"
 
-    sudo apt -y install python3 gmsh git
-
-# Cluster ITA-home69
-# elif [ "$(grep -Ei 'rhel|fedora' /etc/*release)" ]; then 
-#    # Instala o Gmsh
-#    if [ ! -d "$TARGET/gmsh-4.11.1-Linux64" ]; then
-#        echo -e "\n#####"
-#        echo "Gmsh"
-#        echo -e "#####\n"
-#        wget --no-check-certificate https://gmsh.info/bin/Linux/gmsh-4.11.1-Linux64.tgz
-#        tar -xvzf gmsh-4.11.1-Linux64.tgz -C $TARGET
-#        rm gmsh-4.11.1-Linux64.tgz
-#    fi
-
-#    # Adiciona o Gmsh na path do sistema para o usuario atual
-#    if [[ ":$PATH:" != *":$TARGET/gmsh-4.11.1-Linux64/bin:"* ]]; then
-#        echo -e '\n# Adiciona o caminho para a pasta do Gmsh' >> "$HOME/.bashrc"
-#        echo "export PATH=$TARGET/gmsh-4.11.1-Linux64/bin:\$PATH" >> "$HOME/.bashrc"
-#    fi 
+    sudo apt -y install python3 python3-numpy python3-matplotlib gmsh git
 fi
 
 # Baixa o NEK5000 e o KTH_toolbox do repositorio do github
