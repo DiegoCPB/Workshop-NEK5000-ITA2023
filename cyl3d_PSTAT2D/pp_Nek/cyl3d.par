@@ -1,0 +1,40 @@
+#
+# nek parameter file
+#
+[GENERAL]
+stopAt = numSteps
+numSteps = 0
+variableDT = yes
+targetCFL = 0.2
+writeControl = timeStep
+writeInterval = 100
+dealiasing = yes
+timeStepper = bdf2
+
+[PROBLEMTYPE]
+equation = incompNS
+
+[PRESSURE]
+residualTol = 1e-5
+residualProj = yes
+
+[VELOCITY]
+residualTol = 1e-8
+density = 1
+viscosity = -300 # Quando negativo, indica o numero de reynolds
+
+# KTH-toolbox parameters
+#
+[_MNTR]              # Runtime parameter section for monitor module
+LOGLEVEL             = 4                      # Logging threshold for toolboxes
+IFTIMDSCR            = no                     # Write timer description in the summary
+WALLTIME             = 23:45                  # Simulation wall time
+#
+[_PSTAT2D]                # Runtime paramere section for pstat module
+AMR_NREF             = 0                      # Nr. of initial refinemnt (AMR only)
+STS_FFILE            = 1                      # First stat file number
+STS_NFILE            = 7                      # Last stat file number
+STS_STIME            = 0.69968783E+02         # Statistics starting time
+STS_NSTEP            = 10                     # Number of steps between averaging (in sts file)
+
+

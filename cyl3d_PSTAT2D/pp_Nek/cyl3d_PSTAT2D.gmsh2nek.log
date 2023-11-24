@@ -1,0 +1,18 @@
+Enter mesh dimension: 2
+Input .msh file name: cyl3d_PSTAT2D
+ total node number is        20268
+ total line element number is          284
+ total quad element number is         4996
+ ******************************************************
+ Boundary info summary
+ BoundaryName     BoundaryID
+ Cylinder           1
+ Upper           2
+ Lower           3
+ Outlet           4
+ Inlet           5
+ ******************************************************
+ Enter number of periodic boundary surface pairs:
+0
+
+writing cyl3d_PSTAT2D.re2

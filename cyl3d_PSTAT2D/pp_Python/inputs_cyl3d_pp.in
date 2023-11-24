@@ -1,0 +1,14 @@
+# Input parameters for post-processing of the statistics of the 3D cylinder case
+ 
+[Fluid Properties]
+nu = -300     #viscosity (what is set in the simulation)
+rho = 1.0     #density (what is used in the simulation)
+
+[Cylinder Geomtery]
+d = 1         #Diameter of the cylinder
+h = 12.0      #height of the domain
+Lx = 23.0     #streamwise length of the domain
+
+[Interpolating Mesh]
+xpvrt = 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 #streamwise locations at which profiles are extracted
+npvrt = 500    #number of interpolating points on each profile

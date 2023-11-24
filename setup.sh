@@ -6,6 +6,11 @@
 # Parametros
 TARGET="$HOME/Apps" # Pasta dos aplicativos
 
+# Cria a pasta onde serao salvos os arquivos dos aplicativos
+if [ ! -d $TARGET ]; then
+    mkdir $TARGET
+fi
+
 # Para o caso de uma distribuicao Debian-like com acesso root 
 # Pede senha do usuário
 if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
@@ -28,11 +33,24 @@ if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
     echo -e "#############\n"
 
     sudo apt -y install python3 gmsh git
-fi
 
-# Cria a pasta onde serao salvos os arquivos dos aplicativos
-if [ ! -d $TARGET ]; then
-    mkdir $TARGET
+# Cluster ITA-home69
+# elif [ "$(grep -Ei 'rhel|fedora' /etc/*release)" ]; then 
+#    # Instala o Gmsh
+#    if [ ! -d "$TARGET/gmsh-4.11.1-Linux64" ]; then
+#        echo -e "\n#####"
+#        echo "Gmsh"
+#        echo -e "#####\n"
+#        wget --no-check-certificate https://gmsh.info/bin/Linux/gmsh-4.11.1-Linux64.tgz
+#        tar -xvzf gmsh-4.11.1-Linux64.tgz -C $TARGET
+#        rm gmsh-4.11.1-Linux64.tgz
+#    fi
+
+#    # Adiciona o Gmsh na path do sistema para o usuario atual
+#    if [[ ":$PATH:" != *":$TARGET/gmsh-4.11.1-Linux64/bin:"* ]]; then
+#        echo -e '\n# Adiciona o caminho para a pasta do Gmsh' >> "$HOME/.bashrc"
+#        echo "export PATH=$TARGET/gmsh-4.11.1-Linux64/bin:\$PATH" >> "$HOME/.bashrc"
+#    fi 
 fi
 
 # Baixa o NEK5000 e o KTH_toolbox do repositorio do github
