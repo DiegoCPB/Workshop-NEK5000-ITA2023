@@ -1,9 +1,9 @@
 // Controla a refinamento da malha --------------------------------------------
-fact = 2;
+fact = 1.5;
 ptsPERdeg = 0.25;
 
 // Parametros -----------------------------------------------------------------
-Rey = 100;
+Rey = 300;
 BLthick = 1/(Rey)^0.5;
 nlayBL = 5;
 
@@ -21,6 +21,14 @@ rb = r3/Sin(beta);
 
 Lwake = 7;
 Lexit = rb + Lwake + r3/2;
+
+
+// Extrusao
+// Parametros escolhidos para capturar as estruturas descritas em Henderson JFM 1996
+// lambda = 4
+// lambda = 0.8
+h = 8*r0;
+nelz = 10;
 
 // Pontos ---------------------------------------------------------------------
 Point(1) = {0, 0, 0, href};
@@ -208,8 +216,6 @@ Transfinite Surface "*";
 Recombine Surface "*";
 
 // ----------------------------------------------------------------------------
-h = 10*r0;
-nelz = 10;
 Extrude {0,0,h} {
     Surface{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}; 
     Layers{nelz,1};

@@ -2,7 +2,7 @@
 #
 #SBATCH -t 10000:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=24
 #SBATCH --cpus-per-task=1
 #SBATCH --exclusive
 #SBATCH --mail-type=ALL
@@ -12,5 +12,4 @@
 
 # Run this commands
 TOTAL_TASKS=$((SLURM_JOB_NUM_NODES * SLURM_NTASKS_PER_NODE))
-./compile_script
-$HOME/Apps/KTH_Framework/Nek5000/bin/nekmpi cyl3d $TOTAL_TASKS
+$HOME/Apps/KTH_Framework/Nek5000/bin/nekmpi cyl3d $TOTAL_TASKS 2>&1 | tee cyl3d.out

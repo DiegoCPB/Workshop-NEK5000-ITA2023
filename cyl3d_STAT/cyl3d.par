@@ -2,12 +2,12 @@
 # nek parameter file
 #
 [GENERAL]
-endTime  = 100
+endTime  = 200
 stopAt = endTime
 variableDT = yes
-targetCFL = 0.3
-writeControl = runTime
-writeInterval = 0.1
+targetCFL = 0.2
+writeControl = timeStep
+writeInterval = 100
 dealiasing = yes
 timeStepper = bdf2
 
@@ -21,7 +21,7 @@ residualProj = yes
 [VELOCITY]
 residualTol = 1e-8
 density = 1
-viscosity = -100 # Quando negativo, indica o numero de reynolds
+viscosity = -300 # Quando negativo, indica o numero de reynolds
 
 # KTH-toolbox parameters
 [_RPRM]               # Runtime parameter section for rprm module
@@ -33,11 +33,11 @@ LOGLEVEL             = 4                      # Logging threshold for toolboxes
 WALLTIME             = 23:45                  # Simulation wall time
 #
 [_CHKPT]             # Runtime paramere section for checkpoint module
-READCHKPT            = no                     # Restat from checkpoint
+READCHKPT            = no                     # Restart from checkpoint
 CHKPFNUMBER          = 1                      # Restart file number
-CHKPINTERVAL         = 250                    # Checkpiont saving frequency (number of time steps)
+CHKPINTERVAL         = 20000                    # Checkpoint saving frequency (number of time steps)
 #
 [_STAT]             # Runtime parameter section for statistics module
-AVSTEP               = 10
-SKSTEP               = 2
-IOSTEP               = 50
+AVSTEP               = 10     # The frequency, in time-steps, at which the solution is sampled
+SKSTEP               = 20000  # Skipped initial steps
+IOSTEP               = 100    # The output frequency, in time-steps, which also defines the averaging window
