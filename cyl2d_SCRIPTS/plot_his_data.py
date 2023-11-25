@@ -11,7 +11,7 @@ Created on Fri Nov 24 18:47:22 2023
 
 import matplotlib.pyplot as plt
 
-filename = "../cyl2d/cyl2d.his.out"
+filename = "../cyl2d/cyl2d.his"
 
 with open(filename,'r') as hisfile:
     lines = hisfile.readlines()

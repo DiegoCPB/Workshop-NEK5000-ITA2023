@@ -33,8 +33,8 @@ WALLTIME             = 23:45                  # Simulation wall time
 [_PSTAT2D]                # Runtime paramere section for pstat module
 AMR_NREF             = 0                      # Nr. of initial refinemnt (AMR only)
 STS_FFILE            = 1                      # First stat file number
-STS_NFILE            = 947                    # Last stat file number
-STS_STIME            = 4E+1                   # Statistics starting time
+STS_NFILE            = 1520                   # Last stat file number
+STS_STIME            = 6E+1                   # Statistics starting time
 STS_NSTEP            = 100                    # Number of steps between averaging (in sts file)
 
 
