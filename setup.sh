@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
-# Script para configuracao do ambiente NEK5000 no Ubuntu 22.04
-# com instalacao de aplicativos de visualizacao e geracao de malha
+# Script para configuracao do ambiente NEK5000 no Ubuntu 22.04 e no Cluster home69 do ITA
 
 # Parametros
 TARGET="$HOME/Apps" # Pasta dos aplicativos
